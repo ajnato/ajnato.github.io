@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Berechnung Wiederkehrender Beitrag (WkB)</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+    background-color: #f5f5f5;
+  }
+  h1 {
+    color: #333;
+  }
+  label {
+    display: block;
+    margin-top: 15px;
+  }
+  input {
+    padding: 8px;
+    margin-top: 5px;
+    width: 200px;
+  }
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+  }
+  .result {
+    margin-top: 20px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<h1>Berechnung des Wiederkehrenden Beitrags (WkB)</h1>
+
+<p>Gesamtfläche: 200.421 m²</p>
+
+<form onsubmit="berechneWkB(); return false;">
+  <label for="bk">Baukosten (BK) in €:</label>
+  <input type="number" id="bk" step="0.01" required>
+
+  <label for="bf">Beitragspflichtige Fläche (bF) in m²:</label>
+  <input type="number" id="bf" step="0.01" required>
+
+  <button type="submit">Berechnen</button>
+</form>
+
+<div class="result" id="resultat"></div>
+
+<script>
+function berechneWkB() {
+  const bk = parseFloat(document.getElementById("bk").value);
+  const bf = parseFloat(document.getElementById("bf").value);
+
+  if (isNaN(bk) || isNaN(bf) || bf <= 0) {
+    document.getElementById("resultat").innerHTML = "Bitte gültige Zahlen eingeben.";
+    return;
+  }
+
+  // 65% Anteil der Baukosten
+  const bkRelevant = bk * 0.65;
+
+  // Beitragssatz (Bs) = Baukosten (relevant) / beitragspflichtige Fläche
+  const beitragssatz = bkRelevant / 200421;
+
+  
+
+  // Wiederkehrender Beitrag (WkB)
+  const wkB = beitragssatz * bf;
+
+  document.getElementById("resultat").innerHTML =
+    "Beitragssatz (Bs): " + beitragssatz.toFixed(4) + " € pro m²<br>" +
+    "Wiederkehrender Beitrag (WkB): " + wkB.toFixed(2) + " €";
+}
+</script>
+
+</body>
+</html>
