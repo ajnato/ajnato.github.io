@@ -64,16 +64,16 @@ function berechneWkB() {
   const bkRelevant = bk * 0.65;
 
   // Beitragssatz (Bs) = Baukosten (relevant) / beitragspflichtige Fläche
-  const beitragssatz = bkRelevant / 200421;
+  const beitragssatz = (bkRelevant / 200421).toFixed(6);
 
   
 
   // Wiederkehrender Beitrag (WkB)
-  const wkB = beitragssatz * bf;
+  const wkB = (beitragssatz * bf);
 
   document.getElementById("resultat").innerHTML =
-    "Beitragssatz (Bs): " + beitragssatz.toFixed(4) + " € pro m²<br>" +
-    "Wiederkehrender Beitrag (WkB): " + wkB.toFixed(2) + " €";
+    "Beitragssatz (Bs): " + beitragssatz.toLocaleString("de-DE", {maximumSignificantDigits: 2}) + " EUR pro m²<br>" +
+    "Wiederkehrender Beitrag (WkB): " + wkB.toLocaleString("de-DE", {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " EUR";
 }
 </script>
 
