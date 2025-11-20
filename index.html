@@ -72,7 +72,6 @@ function berechneWkB() {
   const wkB = (beitragssatz * bf);
 
   document.getElementById("resultat").innerHTML =
-    "Beitragssatz (Bs): " + beitragssatz.toLocaleString("de-DE", {maximumSignificantDigits: 2}) + " EUR pro m²<br>" +
     "Wiederkehrender Beitrag (WkB): " + wkB.toLocaleString("de-DE", {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " EUR";
 }
 </script>
